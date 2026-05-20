@@ -1,6 +1,6 @@
 # FaceVision Toolkit
 
-[![CI](https://github.com/Yakup24/facevision-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/Yakup24/facevision-tracker/actions/workflows/ci.yml)
+[![CI](https://github.com/Yakup24/FaceVision-Toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/Yakup24/FaceVision-Toolkit/actions/workflows/ci.yml)
 
 FaceVision Toolkit is a Python and OpenCV real-time face and eye detection toolkit. It reads frames from a webcam or video file, runs a Haar Cascade based detection pipeline, renders face/eye overlays, displays FPS and detection metrics, and can save local screenshots.
 
@@ -133,8 +133,8 @@ LICENSE                      MIT license
 ## Getting Started
 
 ```sh
-git clone https://github.com/Yakup24/facevision-tracker.git
-cd facevision-tracker
+git clone https://github.com/Yakup24/FaceVision-Toolkit.git
+cd FaceVision-Toolkit
 python -m venv .venv
 .venv\Scripts\activate
 python -m pip install --upgrade pip
