@@ -1,0 +1,5 @@
+python main.py --camera 0
+python main.py --camera 0 --width 1280 --height 720
+python main.py --source ./examples/demo-video-placeholder.mp4
+python main.py --no-eyes
+python main.py --headless --max-frames 100

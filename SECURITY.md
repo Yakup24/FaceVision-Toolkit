@@ -1,21 +1,25 @@
 # Security Policy
 
-## Supported Versions
+## Data Policy
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+This repository must not include real face photos, private screenshots, camera recordings, access tokens or sensitive personal information.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Privacy
+
+FaceVision Tracker processes frames locally. The project does not upload images, video frames, screenshots or detection output to a remote service.
+
+## Screenshot Safety
+
+Screenshots saved from the application may contain faces, rooms, screens or other private context. Do not commit runtime screenshots to this repository.
+
+## Responsible Usage
+
+Use this project only in environments where people are informed and authorized. Face and eye detection can still create privacy and consent concerns even when no identity recognition is performed.
+
+## Production Warning
+
+This project should not be used as a security authentication, surveillance or identity verification system. It does not provide liveness detection, identity matching, access control review or risk assessment.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+If you identify a security or privacy issue, report it privately to the maintainer. Do not attach real face images, private videos or sensitive logs in public issues.

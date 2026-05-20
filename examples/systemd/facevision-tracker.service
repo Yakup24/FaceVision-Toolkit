@@ -1,0 +1,15 @@
+[Unit]
+Description=FaceVision Tracker Headless Detection Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/facevision-tracker
+ExecStart=/opt/facevision-tracker/.venv/bin/python /opt/facevision-tracker/main.py --camera 0 --headless
+Restart=on-failure
+RestartSec=5
+User=pi
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

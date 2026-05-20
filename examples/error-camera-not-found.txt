@@ -1,0 +1,11 @@
+Command:
+python main.py --camera 99
+
+Example stderr:
+error: Camera/video source could not be opened: 99. Check webcam permissions or the source path.
+
+Checks:
+- Confirm the camera index.
+- Confirm the camera is connected.
+- Close other apps using the camera.
+- Test a video source to isolate camera hardware issues.
