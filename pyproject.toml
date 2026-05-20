@@ -4,17 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "facevision-tracker"
-version = "1.1.0"
-description = "Local OpenCV face and eye detection tracker for webcam and video sources."
+version = "1.2.0"
+description = "Modular local OpenCV face and eye detection toolkit for webcam and video sources."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "GPL-3.0-only" }
+license = { text = "MIT" }
 authors = [
   { name = "Yakup24" }
 ]
 dependencies = [
   "opencv-python>=4.8.0",
-  "numpy>=1.24.0"
+  "numpy>=1.24.0",
+  "PyYAML>=6.0"
 ]
 
 [project.optional-dependencies]
@@ -24,10 +25,10 @@ dev = [
 ]
 
 [project.scripts]
-facevision-tracker = "main:main"
+facevision-tracker = "facevision_tracker.cli:main"
 
-[tool.setuptools]
-py-modules = ["main"]
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

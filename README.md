@@ -2,95 +2,108 @@
 
 [![CI](https://github.com/Yakup24/facevision-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/Yakup24/facevision-tracker/actions/workflows/ci.yml)
 
-FaceVision Tracker is a local OpenCV application for real-time face and eye detection from a webcam or video source. It uses Haar Cascade classifiers, overlays detection boxes and runtime metrics, supports screenshots, and can run in GUI or headless mode for repeatable testing.
+FaceVision Tracker is a Python and OpenCV real-time face and eye detection toolkit. It reads frames from a webcam or video file, runs a Haar Cascade based detection pipeline, renders face/eye overlays, displays FPS and detection metrics, and can save local screenshots.
 
 ## Overview
 
-This project demonstrates a practical local computer vision workflow rather than a single throwaway webcam script. The application opens a camera or video file, detects faces, optionally detects eyes inside each face region, draws overlays, reports FPS, and lets the operator toggle runtime behavior from the keyboard.
+FaceVision Tracker is a local computer vision utility, not a face recognition system. It detects face and eye regions; it does not identify people, match identities, perform biometric authentication, upload frames, or make security decisions.
 
-It does not perform face recognition, identity matching, biometric authentication, cloud upload, or persistent person tracking. Those are listed as limitations or roadmap items when relevant.
+The project is useful for learning OpenCV pipelines, testing camera/video input handling, and demonstrating a clean real-time detection loop with CLI controls, tests, CI, docs and privacy-aware packaging.
 
 ## Problem
 
-Small OpenCV demos often hide operational concerns:
+Simple webcam scripts often skip the engineering details that make a project maintainable:
 
-- Camera/video sources may be unavailable or permission-limited.
-- Detection parameters need repeatable CLI controls.
-- GUI-only loops are hard to test in CI.
-- Screenshots can contain personal data.
-- Cascade files and runtime output need clear project boundaries.
-- Claims about accuracy or FPS should not be made without hardware-specific measurements.
+- camera and video inputs fail in different ways
+- detection settings need repeatable controls
+- GUI loops are hard to test in CI
+- cascade files need clear load errors
+- screenshots can contain private data
+- FPS or accuracy claims are misleading without hardware-specific measurement
 
 ## Solution
 
-FaceVision Tracker keeps the workflow local and explicit:
+FaceVision Tracker provides:
 
-- Webcam and video-file input through OpenCV `VideoCapture`
-- Face detection with `haarcascade_frontalface_default.xml`
-- Optional eye detection with `haarcascade_eye.xml`
-- Runtime overlays for face count, eye count, FPS and mode state
-- Keyboard controls for screenshot, eye detection and mirror mode
-- Headless mode and `--max-frames` for non-GUI execution
-- Camera-independent pytest coverage with mocked OpenCV objects
+- OpenCV Haar Cascade face and eye detection
+- webcam or video-file input
+- runtime keyboard controls
+- FPS and detection counters
+- local screenshot output
+- CLI parameters and optional JSON/YAML config
+- controlled error types for camera, cascade, config and screenshot failures
+- modular `src/facevision_tracker` architecture
+- camera-independent pytest suite and GitHub Actions CI
+- local benchmark script that reports only measurements from the user's machine
 
 ## Architecture
 
 ```text
-Camera / Video Source
+Video Source
   -> Frame Capture
-  -> Grayscale Conversion
-  -> Histogram Equalization
-  -> Face Cascade Detection
-  -> Optional Eye Cascade Detection
-  -> Overlay Renderer
-  -> GUI Window or Headless Console Output
-  -> Optional Screenshot Output
+  -> Preprocessing
+  -> Face Detection
+  -> Eye Detection
+  -> Overlay Rendering
+  -> Keyboard Handler
+  -> Screenshot Output
 ```
 
-Core responsibilities:
+Key modules:
 
-- `DetectionSettings`: runtime detection and display toggles
-- `RuntimeConfig`: source, resolution, output directory and headless options
-- `FaceEyeDetector`: cascade loading and face/eye detection
-- `FPSCounter`: frame timing
-- `draw_detections`: visual overlay and summary generation
-- `run_tracker`: main capture loop
+- `facevision_tracker.cli`: CLI parsing, config loading and application wiring
+- `facevision_tracker.camera`: `VideoCapture` opening and source validation
+- `facevision_tracker.cascades`: Haar cascade loading
+- `facevision_tracker.processing`: grayscale conversion, histogram equalization and mirror transform
+- `facevision_tracker.detectors`: detector backend boundary and Haar implementation
+- `facevision_tracker.overlay`: overlay drawing and detection summaries
+- `facevision_tracker.screenshot`: screenshot naming and write handling
+- `facevision_tracker.runtime`: frame loop and keyboard controls
+- `facevision_tracker.errors`: project-specific exceptions
 
 ## Design Philosophy
 
 FaceVision Tracker is designed around four principles:
 
-1. Local-first processing
-   Frames are processed on the machine running the app.
+1. Simple real-time vision pipeline
+   The project keeps the detection flow understandable: capture frame, preprocess, detect faces, detect eyes and render overlays.
 
-2. Operational clarity
-   Camera source, resolution and detection parameters are controlled through CLI flags.
+2. Runtime usability
+   Keyboard shortcuts, FPS display, screenshot output and CLI arguments make the tool usable beyond a minimal demo script.
 
-3. Testable vision loop
-   Runtime helpers are structured so behavior can be tested without real cameras or real face images.
+3. Local processing
+   Camera frames are processed locally. The project does not require cloud processing or remote upload.
 
-4. Privacy-aware usage
-   Screenshots and video sources may contain personal data and should not be committed.
+4. Honest limitations
+   Haar Cascade detection is lightweight and fast, but it is not as robust as modern deep learning-based detectors in difficult lighting, pose or occlusion scenarios.
 
 ## Core Features
 
 - Real-time face detection
-- Eye detection inside face regions
-- Webcam or video-file input
-- FPS, face count and eye count overlay
-- Screenshot capture to a local output directory
-- Runtime keyboard controls
-- Mirror mode
-- Headless mode for non-GUI runs
-- CLI argument validation
-- Camera-independent pytest test suite
-- GitHub Actions CI with pytest and ruff
+- Eye detection inside face ROI
+- FPS display
+- Face and eye counter
+- Screenshot saving
+- Webcam input
+- Video file input
+- Camera index selection
+- Width/height configuration
+- Mirror mode toggle
+- Eye detection toggle
+- Keyboard shortcuts
+- Headless mode
+- Optional config file
+- Basic benchmark script
+- Camera-independent tests
+- GitHub Actions CI
 
 ## Tech Stack
 
 - Python 3.10+
 - OpenCV
 - NumPy
+- PyYAML
+- Haar Cascade classifiers
 - pytest
 - ruff
 - GitHub Actions
@@ -98,49 +111,38 @@ FaceVision Tracker is designed around four principles:
 ## Project Structure
 
 ```text
-cascades/                   Haar Cascade XML files used by OpenCV
-docs/                       Architecture, usage, testing, privacy and design notes
-examples/                   Placeholder commands, output and service examples
-tests/                      Unit tests with mocked OpenCV/camera behavior
-main.py                     Application entry point and runtime loop
-requirements.txt            Runtime and development dependencies
-pyproject.toml              Project metadata, script entry point and pytest config
-SECURITY.md                 Data and responsible-use policy
-CONTRIBUTING.md             Contribution workflow
-CHANGELOG.md                Project history
-LICENSE                     GPLv3 license
+src/facevision_tracker/      Modular application package
+tests/                       Camera-independent tests
+docs/                        Technical docs, ADRs, privacy, testing and operations notes
+examples/                    Placeholder commands, output and error examples
+benchmarks/                  Local benchmark runner and notes
+config/                      Example YAML config
+cascades/                    Haar Cascade XML files
+main.py                      Backward-compatible script entrypoint
+pyproject.toml               Package metadata and console script
+requirements.txt             Runtime/dev dependencies for quick setup
+requirements-dev.txt         Development dependency entrypoint
+README.md                    Project overview
+SECURITY.md                  Security and privacy policy
+CONTRIBUTING.md              Contribution guide
+CODE_OF_CONDUCT.md           Community expectations
+CHANGELOG.md                 Release history
+LICENSE                      MIT license
 ```
 
 ## Getting Started
 
-Clone the repository:
-
 ```sh
 git clone https://github.com/Yakup24/facevision-tracker.git
 cd facevision-tracker
-```
-
-Create and activate a virtual environment:
-
-```sh
 python -m venv .venv
 .venv\Scripts\activate
-```
-
-Install dependencies:
-
-```sh
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-```
-
-Run the app:
-
-```sh
 python main.py
 ```
 
-Or install the local console script:
+Install as an editable local package:
 
 ```sh
 python -m pip install -e .
@@ -149,103 +151,157 @@ facevision-tracker --help
 
 ## Usage
 
-Run with the default camera:
+Default camera:
 
 ```sh
 python main.py --camera 0
 ```
 
-Choose camera resolution:
+External camera:
+
+```sh
+python main.py --camera 1
+```
+
+Resolution:
 
 ```sh
 python main.py --camera 0 --width 1280 --height 720
 ```
 
-Use a video file:
+Video file:
 
 ```sh
 python main.py --source ./examples/demo-video-placeholder.mp4
 ```
 
-Disable eye detection on startup:
+Eye detection disabled:
 
 ```sh
 python main.py --no-eyes
 ```
 
-Run without a GUI window:
+Mirror mode disabled:
+
+```sh
+python main.py --no-mirror
+```
+
+Headless smoke run:
 
 ```sh
 python main.py --headless --max-frames 100
 ```
 
-Tune detection parameters:
+Config file:
 
 ```sh
-python main.py --scale-factor 1.2 --min-neighbors 6 --min-face-size 60
+python main.py --config config/config.example.yaml
 ```
 
-## Keyboard Controls
+## CLI Reference
+
+```text
+--config PATH          Optional JSON/YAML config file
+--camera INDEX         Camera index
+--source PATH          Video file path instead of webcam
+--width PIXELS         Camera frame width
+--height PIXELS        Camera frame height
+--scale-factor FLOAT   Haar cascade scale factor
+--min-neighbors INT    Haar cascade minNeighbors value
+--min-face-size INT    Minimum face width/height
+--no-eyes              Start with eye detection disabled
+--no-mirror            Start with mirror mode disabled
+--output-dir PATH      Screenshot output directory
+--headless             Run without opening a GUI window
+--max-frames INT       Stop after N frames
+--debug                Print extra runtime context
+```
+
+## Keyboard Shortcuts
 
 | Key | Action |
 | --- | --- |
-| `q` or `ESC` | Exit |
+| `q` or `ESC` | Quit |
 | `s` | Save screenshot |
 | `e` | Toggle eye detection |
 | `m` | Toggle mirror mode |
 
-## Testing
+## Output
 
-Run the camera-independent test suite:
+Screenshots are saved to the configured output directory. By default:
+
+```text
+output/
+  screenshot_YYYYMMDD_HHMMSS.png
+```
+
+The output directory is created when needed and ignored by Git because screenshots can contain personal data.
+
+## Testing
 
 ```sh
 python -m pytest -q
+python -m ruff check .
 ```
 
-Current tests cover:
+Tests cover CLI parsing, config defaults, cascade loading, invalid video paths, camera-open errors, frame preprocessing, screenshot path generation, screenshot failure handling and runtime state toggles.
 
-- CLI parsing and invalid argument handling
-- Runtime config creation
-- Camera unavailable behavior with fake capture objects
-- Cascade file loading errors
-- Detection summary counting
-- Keyboard toggle behavior
-- Screenshot write failure handling
+Tests do not use a real webcam, real face images or private videos.
 
-CI does not use a real camera, real face photos, real videos or hardware-specific FPS assertions.
+## Benchmarking
 
-## Privacy and Safety
+Run a local benchmark:
+
+```sh
+python benchmarks/benchmark_video_source.py --source 0 --frames 300 --width 640 --height 480
+```
+
+No benchmark result is committed or claimed. Results depend on hardware, camera backend, source resolution, lighting and detector settings.
+
+## Documentation
+
+- [System overview](docs/architecture/system-overview.md)
+- [Detection pipeline](docs/architecture/detection-pipeline.md)
+- [Component boundaries](docs/architecture/component-boundaries.md)
+- [Testing strategy](docs/testing/testing-strategy.md)
+- [Troubleshooting](docs/operations/troubleshooting.md)
+- [Privacy model](docs/security/privacy-model.md)
+- [Roadmap](docs/product/roadmap.md)
+- [Design decisions](docs/decisions/ADR-001-why-opencv.md)
+
+## Security and Privacy
 
 - Frames are processed locally.
-- The project does not upload images, videos or detections to a remote service.
-- Screenshots can contain faces or private environments and should stay out of Git.
-- Example files use placeholders only.
-- This project is a face/eye detection demo and local vision utility, not an identity verification or security authentication system.
+- The project does not upload images, videos or detection output.
+- Screenshots and local videos may contain personal data.
+- Real face images, private videos and screenshots must not be committed.
+- This project is not designed for identity verification, surveillance or security-grade authentication.
 
 ## Limitations
 
-- Haar Cascade detection is sensitive to lighting, angle and blur.
-- Eye detection can produce false positives in low-quality frames.
-- FPS depends on camera, resolution, CPU and OpenCV backend.
-- The app does not identify people.
-- The app does not implement persistent multi-object tracking IDs.
-- The app does not provide liveness detection or security-grade verification.
+- Haar Cascade is not as robust as modern deep learning detectors.
+- Low light, blur, occlusion and side profiles can reduce detection quality.
+- Camera quality and OpenCV backend affect results.
+- The project detects regions; it does not identify people.
+- FPS depends on the local machine and should be measured locally.
 
 ## Roadmap
 
-- Optional YAML/JSON config file
+- DNN detector backend
+- MediaPipe detector backend experiment
+- Persistent tracking IDs across frames
+- Detection metrics export
 - Structured event logging
-- OpenCV DNN or MediaPipe detector backend
-- Detection-zone metrics
-- Real tracking IDs across frames
-- Benchmark script with hardware metadata
-- Docker/devcontainer setup for non-camera tests
-- Optional local web dashboard
+- Docker/devcontainer support
+- Simple GUI mode
+- Local API endpoint
+- Release packaging workflow
 
 ## My Contributions
 
-This repository contains the local OpenCV face/eye detection loop, cascade loading checks, CLI controls, screenshot workflow, headless execution support, testable runtime helpers, privacy-aware documentation, examples and CI configuration.
+This project includes the OpenCV detection loop, modular detector pipeline, CLI options, FPS/detection counter overlay, screenshot handling, runtime keyboard controls, headless execution, config support, benchmark runner, pytest suite, CI workflow, README/docs packaging and privacy/security notes.
 
 ## License
 
-This project is licensed under GPLv3. The Haar Cascade XML files include their original OpenCV/Intel license notices.
+This project is licensed under the MIT License. Haar Cascade XML files include their original OpenCV/Intel license notices.

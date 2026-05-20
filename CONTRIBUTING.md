@@ -6,8 +6,9 @@
 python -m venv .venv
 .venv\Scripts\activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-dev.txt
 python -m pytest -q
+python -m ruff check .
 ```
 
 ## Branch Naming
@@ -16,6 +17,7 @@ python -m pytest -q
 - `fix/camera-open-error`
 - `docs/update-privacy-notes`
 - `test/add-cli-validation`
+- `chore/update-release-notes`
 
 ## Commit Style
 
@@ -32,3 +34,4 @@ python -m pytest -q
 - No private videos or secrets are committed.
 - README/docs are updated when behavior changes.
 - Camera-dependent behavior is mocked or documented.
+- Privacy impact is considered for screenshots, videos and logs.

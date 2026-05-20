@@ -1,0 +1,20 @@
+camera:
+  source: 0
+  width: 640
+  height: 480
+
+detector:
+  backend: haar
+  face_scale_factor: 1.2
+  min_neighbors: 6
+  min_face_size: 60
+  enable_eye_detection: true
+
+runtime:
+  mirror: true
+  headless: false
+  show_fps: true
+  debug: false
+
+output:
+  screenshots_dir: ./output

@@ -1,0 +1,10 @@
+[ERROR] Could not open video source: 0
+
+Possible causes:
+- Camera is being used by another application.
+- Camera permission is blocked.
+- Wrong camera index was selected.
+- External webcam is not connected.
+
+Try:
+python main.py --camera 1

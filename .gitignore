@@ -13,6 +13,8 @@ env/
 # Runtime output
 output/
 logs/
+dist/
+build/
 *.log
 
 # Local media and privacy-sensitive captures

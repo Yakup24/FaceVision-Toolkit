@@ -1,6 +1,6 @@
 import pytest
 
-from main import parse_arguments, runtime_config_from_args, settings_from_args
+from facevision_tracker.cli import parse_arguments, runtime_config_from_args, settings_from_args
 
 
 def test_parse_default_arguments():
@@ -21,6 +21,35 @@ def test_parse_video_source_and_headless_mode(tmp_path):
     assert runtime.source == "demo.mp4"
     assert runtime.headless is True
     assert runtime.max_frames == 3
+
+
+def test_parse_config_file_defaults(tmp_path):
+    config_path = tmp_path / "config.json"
+    config_path.write_text(
+        """
+        {
+          "camera": {"source": 1, "width": 640, "height": 480},
+          "detector": {"enable_eye_detection": false, "min_neighbors": 4},
+          "runtime": {"mirror": false, "headless": true, "max_frames": 5},
+          "output": {"screenshots_dir": "captures"}
+        }
+        """,
+        encoding="utf-8",
+    )
+
+    args = parse_arguments(["--config", str(config_path)])
+    runtime = runtime_config_from_args(args, tmp_path)
+    settings = settings_from_args(args)
+
+    assert args.camera == 1
+    assert runtime.width == 640
+    assert runtime.height == 480
+    assert runtime.headless is True
+    assert runtime.max_frames == 5
+    assert runtime.output_dir == tmp_path / "captures"
+    assert settings.detect_eyes is False
+    assert settings.mirror is False
+    assert settings.min_neighbors == 4
 
 
 def test_settings_from_args_disables_eyes_and_mirror():
