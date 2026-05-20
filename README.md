@@ -111,16 +111,17 @@ FaceVision Toolkit is designed around four principles:
 ## Project Structure
 
 ```text
-src/facevision_toolkit/      Modular application package
-tests/                       Camera-independent tests
-docs/                        Technical docs, ADRs, privacy, testing and operations notes
-examples/                    Placeholder commands, output and error examples
+.github/                     CI workflow, issue templates and PR template
 benchmarks/                  Local benchmark runner and notes
-config/                      Example YAML config
 cascades/                    Haar Cascade XML files
+config/                      Example YAML config
+docs/                        Single-level technical documentation
+examples/                    Placeholder commands, output, errors and service file
+src/facevision_toolkit/      Modular application package
+tests/                       Camera-independent pytest suite
 main.py                      Backward-compatible script entrypoint
-pyproject.toml               Package metadata and console script
-requirements.txt             Runtime/dev dependencies for quick setup
+pyproject.toml               Package metadata and console scripts
+requirements.txt             Runtime dependencies for quick setup
 requirements-dev.txt         Development dependency entrypoint
 README.md                    Project overview
 SECURITY.md                  Security and privacy policy
@@ -263,14 +264,15 @@ No benchmark result is committed or claimed. Results depend on hardware, camera 
 
 ## Documentation
 
-- [System overview](docs/architecture/system-overview.md)
-- [Detection pipeline](docs/architecture/detection-pipeline.md)
-- [Component boundaries](docs/architecture/component-boundaries.md)
-- [Testing strategy](docs/testing/testing-strategy.md)
-- [Troubleshooting](docs/operations/troubleshooting.md)
-- [Privacy model](docs/security/privacy-model.md)
-- [Roadmap](docs/product/roadmap.md)
-- [Design decisions](docs/decisions/ADR-001-why-opencv.md)
+- [Architecture](docs/architecture.md)
+- [OpenCV pipeline](docs/opencv-pipeline.md)
+- [Camera flow](docs/camera-flow.md)
+- [Usage](docs/usage.md)
+- [Testing strategy](docs/testing-strategy.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [Privacy](docs/privacy.md)
+- [Roadmap](docs/roadmap.md)
+- [Design decisions](docs/design-decisions.md)
 
 ## Security and Privacy
 
