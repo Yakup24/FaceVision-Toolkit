@@ -1,6 +1,6 @@
 import pytest
 
-from facevision_tracker.cli import parse_arguments, runtime_config_from_args, settings_from_args
+from facevision_toolkit.cli import parse_arguments, runtime_config_from_args, settings_from_args
 
 
 def test_parse_default_arguments():

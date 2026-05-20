@@ -2,11 +2,11 @@
 
 ## 1. Capture
 
-`facevision_tracker.camera.open_capture` opens a camera index or local video file through OpenCV `VideoCapture`.
+`facevision_toolkit.camera.open_capture` opens a camera index or local video file through OpenCV `VideoCapture`.
 
 ## 2. Preprocessing
 
-`facevision_tracker.processing.preprocess_frame` converts each frame to grayscale and applies histogram equalization.
+`facevision_toolkit.processing.preprocess_frame` converts each frame to grayscale and applies histogram equalization.
 
 ## 3. Face detection
 
@@ -18,8 +18,8 @@ If enabled, eye detection runs only inside each detected face ROI. This reduces 
 
 ## 5. Rendering
 
-`facevision_tracker.overlay.draw_detections` draws face boxes, eye boxes and runtime status text.
+`facevision_toolkit.overlay.draw_detections` draws face boxes, eye boxes and runtime status text.
 
 ## 6. Runtime controls
 
-`facevision_tracker.runtime.handle_key` owns screenshot, eye-toggle, mirror-toggle and exit keys.
+`facevision_toolkit.runtime.handle_key` owns screenshot, eye-toggle, mirror-toggle and exit keys.

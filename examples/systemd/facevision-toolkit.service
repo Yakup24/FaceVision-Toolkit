@@ -1,0 +1,15 @@
+[Unit]
+Description=FaceVision Toolkit Headless Detection Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/facevision-toolkit
+ExecStart=/opt/facevision-toolkit/.venv/bin/python /opt/facevision-toolkit/main.py --camera 0 --headless
+Restart=on-failure
+RestartSec=5
+User=pi
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

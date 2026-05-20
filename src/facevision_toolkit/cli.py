@@ -1,4 +1,4 @@
-"""Command-line interface for FaceVision Tracker."""
+"""Command-line interface for FaceVision Toolkit."""
 
 from __future__ import annotations
 

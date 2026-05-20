@@ -1,4 +1,4 @@
-"""Backward-compatible script entry point for FaceVision Tracker."""
+"""Backward-compatible script entry point for FaceVision Toolkit."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ if str(SRC) not in sys.path:
 
 
 def main() -> int:
-    from facevision_tracker.cli import main as package_main
+    from facevision_toolkit.cli import main as package_main
 
     return package_main()
 

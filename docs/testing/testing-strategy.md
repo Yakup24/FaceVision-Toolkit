@@ -17,4 +17,4 @@ CI should not access a real webcam, real face images, private videos or hardware
 
 ## Mocking
 
-Tests monkeypatch the OpenCV dependency boundary in `facevision_tracker.cv`. This keeps camera and GUI behavior out of CI.
+Tests monkeypatch the OpenCV dependency boundary in `facevision_toolkit.cv`. This keeps camera and GUI behavior out of CI.

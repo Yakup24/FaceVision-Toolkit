@@ -1,6 +1,6 @@
 # Keyboard Controls
 
-Keyboard controls are handled by `facevision_tracker.runtime.handle_key`.
+Keyboard controls are handled by `facevision_toolkit.runtime.handle_key`.
 
 | Key | Action |
 | --- | --- |

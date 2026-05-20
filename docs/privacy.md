@@ -1,6 +1,6 @@
 # Privacy
 
-FaceVision Tracker detects faces and eyes locally. Even without identity recognition, camera frames and screenshots can contain personal data.
+FaceVision Toolkit detects faces and eyes locally. Even without identity recognition, camera frames and screenshots can contain personal data.
 
 ## Local processing
 

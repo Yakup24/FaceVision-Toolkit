@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added root-level project documentation.
-- Added modular `src/facevision_tracker` package structure.
+- Added modular `src/facevision_toolkit` package structure.
 - Added CLI, camera, cascade, processing, detector, overlay, screenshot, runtime and errors modules.
 - Added optional JSON/YAML config file support.
 - Added benchmark script for local FPS measurement without committed results.

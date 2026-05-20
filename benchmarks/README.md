@@ -1,6 +1,6 @@
 # Benchmarks
 
-FaceVision Tracker does not ship fixed FPS claims. Benchmark results depend on CPU, camera backend, video resolution, lighting, detector settings and whether eye detection is enabled.
+FaceVision Toolkit does not ship fixed FPS claims. Benchmark results depend on CPU, camera backend, video resolution, lighting, detector settings and whether eye detection is enabled.
 
 Run a local benchmark:
 

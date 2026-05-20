@@ -1,12 +1,12 @@
-# FaceVision Tracker
+# FaceVision Toolkit
 
 [![CI](https://github.com/Yakup24/facevision-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/Yakup24/facevision-tracker/actions/workflows/ci.yml)
 
-FaceVision Tracker is a Python and OpenCV real-time face and eye detection toolkit. It reads frames from a webcam or video file, runs a Haar Cascade based detection pipeline, renders face/eye overlays, displays FPS and detection metrics, and can save local screenshots.
+FaceVision Toolkit is a Python and OpenCV real-time face and eye detection toolkit. It reads frames from a webcam or video file, runs a Haar Cascade based detection pipeline, renders face/eye overlays, displays FPS and detection metrics, and can save local screenshots.
 
 ## Overview
 
-FaceVision Tracker is a local computer vision utility, not a face recognition system. It detects face and eye regions; it does not identify people, match identities, perform biometric authentication, upload frames, or make security decisions.
+FaceVision Toolkit is a local computer vision utility, not a face recognition system. It detects face and eye regions; it does not identify people, match identities, perform biometric authentication, upload frames, or make security decisions.
 
 The project is useful for learning OpenCV pipelines, testing camera/video input handling, and demonstrating a clean real-time detection loop with CLI controls, tests, CI, docs and privacy-aware packaging.
 
@@ -23,7 +23,7 @@ Simple webcam scripts often skip the engineering details that make a project mai
 
 ## Solution
 
-FaceVision Tracker provides:
+FaceVision Toolkit provides:
 
 - OpenCV Haar Cascade face and eye detection
 - webcam or video-file input
@@ -32,7 +32,7 @@ FaceVision Tracker provides:
 - local screenshot output
 - CLI parameters and optional JSON/YAML config
 - controlled error types for camera, cascade, config and screenshot failures
-- modular `src/facevision_tracker` architecture
+- modular `src/facevision_toolkit` architecture
 - camera-independent pytest suite and GitHub Actions CI
 - local benchmark script that reports only measurements from the user's machine
 
@@ -51,19 +51,19 @@ Video Source
 
 Key modules:
 
-- `facevision_tracker.cli`: CLI parsing, config loading and application wiring
-- `facevision_tracker.camera`: `VideoCapture` opening and source validation
-- `facevision_tracker.cascades`: Haar cascade loading
-- `facevision_tracker.processing`: grayscale conversion, histogram equalization and mirror transform
-- `facevision_tracker.detectors`: detector backend boundary and Haar implementation
-- `facevision_tracker.overlay`: overlay drawing and detection summaries
-- `facevision_tracker.screenshot`: screenshot naming and write handling
-- `facevision_tracker.runtime`: frame loop and keyboard controls
-- `facevision_tracker.errors`: project-specific exceptions
+- `facevision_toolkit.cli`: CLI parsing, config loading and application wiring
+- `facevision_toolkit.camera`: `VideoCapture` opening and source validation
+- `facevision_toolkit.cascades`: Haar cascade loading
+- `facevision_toolkit.processing`: grayscale conversion, histogram equalization and mirror transform
+- `facevision_toolkit.detectors`: detector backend boundary and Haar implementation
+- `facevision_toolkit.overlay`: overlay drawing and detection summaries
+- `facevision_toolkit.screenshot`: screenshot naming and write handling
+- `facevision_toolkit.runtime`: frame loop and keyboard controls
+- `facevision_toolkit.errors`: project-specific exceptions
 
 ## Design Philosophy
 
-FaceVision Tracker is designed around four principles:
+FaceVision Toolkit is designed around four principles:
 
 1. Simple real-time vision pipeline
    The project keeps the detection flow understandable: capture frame, preprocess, detect faces, detect eyes and render overlays.
@@ -111,7 +111,7 @@ FaceVision Tracker is designed around four principles:
 ## Project Structure
 
 ```text
-src/facevision_tracker/      Modular application package
+src/facevision_toolkit/      Modular application package
 tests/                       Camera-independent tests
 docs/                        Technical docs, ADRs, privacy, testing and operations notes
 examples/                    Placeholder commands, output and error examples
@@ -146,8 +146,10 @@ Install as an editable local package:
 
 ```sh
 python -m pip install -e .
-facevision-tracker --help
+facevision-toolkit --help
 ```
+
+The legacy `facevision-tracker` command is kept as an alias for compatibility.
 
 ## Usage
 

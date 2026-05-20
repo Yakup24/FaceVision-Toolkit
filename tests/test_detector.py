@@ -3,8 +3,8 @@ from types import SimpleNamespace
 
 import pytest
 
-from facevision_tracker import cv
-from facevision_tracker.cascades import load_cascade
+from facevision_toolkit import cv
+from facevision_toolkit.cascades import load_cascade
 
 
 class FakeCascade:

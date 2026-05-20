@@ -1,6 +1,6 @@
 # Camera Setup
 
-FaceVision Tracker uses OpenCV `VideoCapture`, so camera behavior depends on the OS, camera driver and OpenCV backend.
+FaceVision Toolkit uses OpenCV `VideoCapture`, so camera behavior depends on the OS, camera driver and OpenCV backend.
 
 ## USB webcams
 

@@ -46,7 +46,7 @@ def handle_key(key: int, settings: DetectionSettings, frame: Any, output_dir: Pa
 def run_tracker(detector: Detector, capture: Any, settings: DetectionSettings, config: RuntimeConfig) -> int:
     opencv = require_cv2()
     fps_counter = FPSCounter()
-    window_name = "FaceVision Tracker"
+    window_name = "FaceVision Toolkit"
     frames_processed = 0
 
     if not config.headless:

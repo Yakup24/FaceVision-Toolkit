@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a FaceVision Tracker bug without sharing private camera data
+about: Report a FaceVision Toolkit bug without sharing private camera data
 title: "[Bug]: "
 labels: bug
 assignees: ""

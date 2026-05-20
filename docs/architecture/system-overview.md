@@ -1,6 +1,6 @@
 # System Overview
 
-FaceVision Tracker is now organized as a small local computer vision toolkit.
+FaceVision Toolkit is now organized as a small local computer vision toolkit.
 
 ```text
 Video Source

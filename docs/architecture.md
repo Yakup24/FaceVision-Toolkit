@@ -1,6 +1,6 @@
 # Architecture
 
-FaceVision Tracker is a local OpenCV application with a small, testable runtime loop.
+FaceVision Toolkit is a local OpenCV application with a small, testable runtime loop.
 
 ## High-level flow
 

@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest a FaceVision Tracker improvement
+about: Suggest a FaceVision Toolkit improvement
 title: "[Feature]: "
 labels: enhancement
 assignees: ""

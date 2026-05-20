@@ -1,6 +1,6 @@
 import pytest
 
-from facevision_tracker.camera import validate_video_source
+from facevision_toolkit.camera import validate_video_source
 
 
 def test_invalid_video_path_returns_clear_error(tmp_path):

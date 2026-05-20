@@ -3,12 +3,12 @@ from unittest.mock import Mock
 
 import pytest
 
-from facevision_tracker import cv
-from facevision_tracker.camera import open_capture
-from facevision_tracker.config import DetectionSettings, RuntimeConfig
-from facevision_tracker.overlay import count_detections
-from facevision_tracker.runtime import handle_key
-from facevision_tracker.screenshot import build_screenshot_path, save_screenshot
+from facevision_toolkit import cv
+from facevision_toolkit.camera import open_capture
+from facevision_toolkit.config import DetectionSettings, RuntimeConfig
+from facevision_toolkit.overlay import count_detections
+from facevision_toolkit.runtime import handle_key
+from facevision_toolkit.screenshot import build_screenshot_path, save_screenshot
 
 
 class FakeCapture:
@@ -69,7 +69,7 @@ def test_count_detections_returns_faces_and_eyes():
 
 def test_handle_key_toggles_runtime_settings(tmp_path, monkeypatch):
     settings = DetectionSettings(detect_eyes=True, mirror=True)
-    monkeypatch.setattr("facevision_tracker.runtime.save_screenshot", lambda frame, output_dir: tmp_path / "shot.png")
+    monkeypatch.setattr("facevision_toolkit.runtime.save_screenshot", lambda frame, output_dir: tmp_path / "shot.png")
 
     assert handle_key(ord("e"), settings, object(), tmp_path) is True
     assert settings.detect_eyes is False

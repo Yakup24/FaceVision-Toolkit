@@ -17,7 +17,7 @@ if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Benchmark FaceVision Tracker on a local source.")
+    parser = argparse.ArgumentParser(description="Benchmark FaceVision Toolkit on a local source.")
     parser.add_argument("--source", default="0", help="Camera index or video file path.")
     parser.add_argument("--frames", type=int, default=300, help="Maximum frames to process.")
     parser.add_argument("--width", type=int, default=640, help="Camera width for camera sources.")
@@ -27,10 +27,10 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    from facevision_tracker.camera import open_capture
-    from facevision_tracker.cascades import default_cascade_dir
-    from facevision_tracker.config import DetectionSettings, RuntimeConfig, coerce_source
-    from facevision_tracker.detectors.haar_detector import HaarCascadeDetector
+    from facevision_toolkit.camera import open_capture
+    from facevision_toolkit.cascades import default_cascade_dir
+    from facevision_toolkit.config import DetectionSettings, RuntimeConfig, coerce_source
+    from facevision_toolkit.detectors.haar_detector import HaarCascadeDetector
 
     args = build_parser().parse_args()
     source = coerce_source(args.source)

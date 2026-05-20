@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "facevision-tracker"
+name = "facevision-toolkit"
 version = "1.2.0"
 description = "Modular local OpenCV face and eye detection toolkit for webcam and video sources."
 readme = "README.md"
@@ -25,7 +25,8 @@ dev = [
 ]
 
 [project.scripts]
-facevision-tracker = "facevision_tracker.cli:main"
+facevision-toolkit = "facevision_toolkit.cli:main"
+facevision-tracker = "facevision_toolkit.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

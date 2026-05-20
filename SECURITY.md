@@ -6,7 +6,7 @@ This repository must not include real face images, private camera recordings, pe
 
 ## Privacy
 
-FaceVision Tracker processes camera frames locally. Screenshots saved from the application may contain personal data depending on the environment. Users are responsible for using the tool only in authorized and consent-based scenarios.
+FaceVision Toolkit processes camera frames locally. Screenshots saved from the application may contain personal data depending on the environment. Users are responsible for using the tool only in authorized and consent-based scenarios.
 
 ## Responsible Usage
 

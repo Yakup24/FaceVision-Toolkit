@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 
-from facevision_tracker import cv
-from facevision_tracker.processing import mirror_frame, preprocess_frame
+from facevision_toolkit import cv
+from facevision_toolkit.processing import mirror_frame, preprocess_frame
 
 
 def test_preprocess_frame_runs_grayscale_and_equalization(monkeypatch):

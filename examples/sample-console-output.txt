@@ -1,4 +1,4 @@
-FaceVision Tracker - Demo Session
+FaceVision Toolkit - Demo Session
 
 Source: camera index 0
 Resolution: 640x480

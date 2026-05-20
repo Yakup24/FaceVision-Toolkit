@@ -1,6 +1,6 @@
 # Privacy Model
 
-FaceVision Tracker processes camera frames locally. It does not upload frames, screenshots, video files or detections.
+FaceVision Toolkit processes camera frames locally. It does not upload frames, screenshots, video files or detections.
 
 ## Sensitive Data
 

@@ -1,4 +1,4 @@
-"""Run FaceVision Tracker as a module."""
+"""Run FaceVision Toolkit as a module."""
 
 from .cli import main
 
