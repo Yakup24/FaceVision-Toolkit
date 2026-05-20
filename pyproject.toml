@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facevision-toolkit"
+version = "1.2.0"
+description = "Modular local OpenCV face and eye detection toolkit for webcam and video sources."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Yakup24" }
+]
+dependencies = [
+  "opencv-python>=4.8.0",
+  "numpy>=1.24.0",
+  "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "ruff>=0.6"
+]
+
+[project.scripts]
+facevision-toolkit = "facevision_toolkit.cli:main"
+facevision-tracker = "facevision_toolkit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

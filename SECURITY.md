@@ -1,21 +1,17 @@
 # Security Policy
 
-## Supported Versions
+## Data Policy
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+This repository must not include real face images, private camera recordings, personal videos, screenshots, secrets or sensitive personal information.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Privacy
+
+FaceVision Toolkit processes camera frames locally. Screenshots saved from the application may contain personal data depending on the environment. Users are responsible for using the tool only in authorized and consent-based scenarios.
+
+## Responsible Usage
+
+This project is a computer vision demonstration and utility tool. It is not designed for identity verification, surveillance or security-grade authentication.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+If you identify a security or privacy issue, report it privately to the maintainer. Do not attach real face images, private camera recordings, screenshots or sensitive logs in public issues.

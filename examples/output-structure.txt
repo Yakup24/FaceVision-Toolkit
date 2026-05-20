@@ -1,0 +1,3 @@
+output/
+  screenshot_20260101_100000.png
+  screenshot_20260101_100015.png

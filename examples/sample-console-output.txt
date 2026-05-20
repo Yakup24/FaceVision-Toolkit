@@ -1,0 +1,17 @@
+FaceVision Toolkit - Demo Session
+
+Source: camera index 0
+Resolution: 640x480
+Mirror mode: enabled
+Eye detection: enabled
+
+Command:
+python main.py --headless --max-frames 3
+
+Application started.
+Controls: q/ESC=exit, s=screenshot, e=toggle eyes, m=toggle mirror
+frame=1 faces=0 eyes=0 fps=30.0
+frame=2 faces=1 eyes=2 fps=29.7
+frame=3 faces=1 eyes=0 fps=29.9
+
+[INFO] Screenshot files are saved under output/ when the s key is used.

@@ -1,0 +1,10 @@
+[ERROR] Face cascade file not found: cascades/haarcascade_frontalface_default.xml
+
+Possible causes:
+- The cascades directory was moved.
+- The repository was copied without XML files.
+- The command is being run from an unexpected installation layout.
+
+Try:
+git status
+python main.py --help
