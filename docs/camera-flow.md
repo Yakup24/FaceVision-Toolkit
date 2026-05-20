@@ -21,7 +21,7 @@ python main.py --camera 1
 Use `--source` for a local video file.
 
 ```sh
-python main.py --source ./examples/demo-video-placeholder.mp4
+python main.py --source ./local-demo-video.mp4
 ```
 
 ## 4. Width and height

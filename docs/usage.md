@@ -11,7 +11,7 @@ python main.py --camera 0
 ## Video file
 
 ```sh
-python main.py --source ./examples/demo-video-placeholder.mp4
+python main.py --source ./local-demo-video.mp4
 ```
 
 The placeholder path shows the supported command shape. No real video file is committed.

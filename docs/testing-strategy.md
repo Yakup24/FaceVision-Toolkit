@@ -10,6 +10,7 @@ Tests should validate deterministic behavior without requiring a real camera or 
 - Runtime toggle behavior
 - Screenshot failure handling
 - Detection summary formatting
+- Repository hygiene and Markdown link integrity
 
 ## Test types
 
@@ -17,6 +18,7 @@ Tests should validate deterministic behavior without requiring a real camera or 
 - Unit tests for runtime helper functions
 - Mock-based tests for OpenCV capture behavior
 - File-existence tests for bundled cascade files
+- Repository validation tests for portfolio-critical files and committed artifacts
 
 ## Not tested in CI
 
@@ -29,3 +31,15 @@ Tests should validate deterministic behavior without requiring a real camera or 
 ## Mocking strategy
 
 Tests monkeypatch the module-level `cv2` object with lightweight fake objects. This lets CI run without camera hardware and without opening GUI windows.
+
+## Quality gates
+
+Before merging, run:
+
+```sh
+python scripts/validate_project.py
+python -m ruff check .
+python -m pytest -q
+```
+
+These gates intentionally avoid hardware-dependent checks. Real camera validation remains a manual local check.

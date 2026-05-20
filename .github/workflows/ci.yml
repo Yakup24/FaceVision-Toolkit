@@ -36,6 +36,9 @@ jobs:
           python -m pip install -e .
           python -m pip install -r requirements-dev.txt
 
+      - name: Validate repository hygiene
+        run: python scripts/validate_project.py
+
       - name: Lint
         run: ruff check .
 

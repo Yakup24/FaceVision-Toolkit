@@ -77,6 +77,19 @@ FaceVision Toolkit is designed around four principles:
 4. Honest limitations
    Haar Cascade detection is lightweight and fast, but it is not as robust as modern deep learning-based detectors in difficult lighting, pose or occlusion scenarios.
 
+## Engineering Maturity
+
+The project is packaged as a small engineering system, not only a runnable script:
+
+| Area | Implementation |
+| --- | --- |
+| Architecture | Modular `src/facevision_toolkit` package with explicit camera, config, detector, overlay, screenshot and runtime boundaries |
+| Testability | Camera-independent pytest suite with synthetic frames and OpenCV fakes |
+| Operations | Headless mode, bounded frame runs and systemd service example |
+| Quality gates | Repository validation, ruff and pytest in CI |
+| Privacy | Local-only processing with media and screenshot artifacts excluded from Git |
+| Extensibility | Detector protocol allows future DNN or MediaPipe backends without rewriting the runtime loop |
+
 ## Core Features
 
 - Real-time face detection
@@ -117,6 +130,7 @@ cascades/                    Haar Cascade XML files
 config/                      Example YAML config
 docs/                        Single-level technical documentation
 examples/                    Placeholder commands, output, errors and service file
+scripts/                     Repository validation and maintenance helpers
 src/facevision_toolkit/      Modular application package
 tests/                       Camera-independent pytest suite
 main.py                      Backward-compatible script entrypoint
@@ -175,7 +189,7 @@ python main.py --camera 0 --width 1280 --height 720
 Video file:
 
 ```sh
-python main.py --source ./examples/demo-video-placeholder.mp4
+python main.py --source ./local-demo-video.mp4
 ```
 
 Eye detection disabled:
@@ -244,11 +258,14 @@ The output directory is created when needed and ignored by Git because screensho
 ## Testing
 
 ```sh
+python scripts/validate_project.py
 python -m pytest -q
 python -m ruff check .
 ```
 
-Tests cover CLI parsing, config defaults, cascade loading, invalid video paths, camera-open errors, frame preprocessing, screenshot path generation, screenshot failure handling and runtime state toggles.
+The validation script checks required project files, local Markdown links, tracked generated artifacts and tracked media files.
+
+Tests cover CLI parsing, config defaults, cascade loading, invalid video paths, camera-open errors, frame preprocessing, screenshot path generation, screenshot failure handling, runtime state toggles and repository hygiene.
 
 Tests do not use a real webcam, real face images or private videos.
 
@@ -265,9 +282,11 @@ No benchmark result is committed or claimed. Results depend on hardware, camera 
 ## Documentation
 
 - [Architecture](docs/architecture.md)
+- [Engineering model](docs/engineering-model.md)
 - [OpenCV pipeline](docs/opencv-pipeline.md)
 - [Camera flow](docs/camera-flow.md)
 - [Usage](docs/usage.md)
+- [Quality gates](docs/quality-gates.md)
 - [Testing strategy](docs/testing-strategy.md)
 - [Troubleshooting](docs/troubleshooting.md)
 - [Privacy](docs/privacy.md)

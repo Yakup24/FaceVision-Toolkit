@@ -4,7 +4,8 @@ This roadmap lists planned work only.
 
 ## Planned
 
-- Optional YAML/JSON config file
+- Detector backend selection from config
+- Versioned config schema validation
 - Structured event logging
 - OpenCV DNN detector backend
 - MediaPipe detector backend experiment
@@ -13,6 +14,7 @@ This roadmap lists planned work only.
 - Benchmark script with hardware metadata
 - Docker/devcontainer setup for non-camera tests
 - Optional local web dashboard
+- Release packaging workflow
 
 ## Not planned as default behavior
 

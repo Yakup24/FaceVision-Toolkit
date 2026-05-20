@@ -4,6 +4,7 @@ Describe the change and why it is needed.
 
 ## Validation
 
+- [ ] `python scripts/validate_project.py`
 - [ ] `python -m pytest -q`
 - [ ] `ruff check .`
 - [ ] Camera-dependent behavior was mocked or manually tested

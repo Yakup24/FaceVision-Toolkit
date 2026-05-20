@@ -20,6 +20,13 @@ Do not commit:
 - logs containing sensitive locations or personal context
 - credentials or local environment files
 
+## Data classification
+
+- Camera frames: transient runtime data, not stored by default.
+- Screenshots: local output that may contain personal data.
+- Local videos: user-provided input and not part of the repository.
+- Logs: human-readable operational output; avoid adding sensitive location or identity context.
+
 ## Consent
 
 Use the app only in environments where people are informed and authorized.

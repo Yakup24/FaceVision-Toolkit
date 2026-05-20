@@ -7,6 +7,7 @@ python -m venv .venv
 .venv\Scripts\activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
+python scripts/validate_project.py
 python -m pytest -q
 python -m ruff check .
 ```
@@ -30,6 +31,7 @@ python -m ruff check .
 ## Pull Request Checklist
 
 - Tests pass locally.
+- Repository validation passes locally.
 - No real face photos or screenshots are included.
 - No private videos or secrets are committed.
 - README/docs are updated when behavior changes.

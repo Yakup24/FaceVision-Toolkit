@@ -1,1 +1,1 @@
-python main.py --source ./examples/demo-video-placeholder.mp4
+python main.py --source ./local-demo-video.mp4

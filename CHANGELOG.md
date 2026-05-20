@@ -20,7 +20,9 @@ All notable changes to this project will be documented in this file.
 - Added CLI, camera, cascade, processing, detector, overlay, screenshot, runtime and errors modules.
 - Added optional JSON/YAML config file support.
 - Added benchmark script for local FPS measurement without committed results.
-- Added architecture, OpenCV pipeline, ADR, security, testing, operations and product documentation.
+- Added architecture, OpenCV pipeline, engineering model, quality gates, security, testing, usage and roadmap documentation.
+- Added repository validation for required files, Markdown links and committed media policy.
+- Added Dependabot configuration for dependency and GitHub Actions hygiene.
 - Added sample console outputs, command examples and troubleshooting notes.
 - Added CI workflow for camera-independent test execution.
 - Added project-specific security, privacy, contribution and conduct notes.
@@ -31,6 +33,7 @@ All notable changes to this project will be documented in this file.
 - Improved README structure for technical review and portfolio presentation.
 - Cleaned placeholder clone commands and setup instructions.
 - Reworked `main.py` into a backward-compatible entrypoint over the package.
+- Flattened documentation and examples into a cleaner single-level project structure.
 
 ## [0.1.0] - Initial Public Release
 
